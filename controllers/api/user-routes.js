@@ -5,7 +5,7 @@ const { User } = require('../../models');
 router.get('/', (req, res) => {
   // Access User model and run .findAll() method)
   User.findAll()
-    .then(dbUserData => res.json(dbUserData))
+    .then(userData => res.json(userData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -52,10 +52,38 @@ router.post('/', (req, res) => {
 
 
 
+router.post('/login', (req, res) => {
+  // expects {email: 'name@gmail.com', password: '1234'}
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then(userData => {
+    if (!userData) {
+      res.status(400).json({ message: 'No user with that email address!' });
+      return;
+    }
+
+    // res.json({ user: userData });
+
+    // Verify user
+    const validPassword = userData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: 'Incorrect password or eMail!' });
+      return;
+    }
+
+    res.json({ user: userData, message: 'You are now logged in!' });
+
+  });
+})
+
+
 // PUT UPDATE One User
 router.put('/:id', (req, res) => {
   // if req.body has exact key/value pairs to match the model, use `req.body` instead
   User.update(req.body, {
+    individualHooks: true,
     where: {
       id: req.params.id
     }
