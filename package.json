@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "seeds": "node seeds/index.js"
+  },
+  "name": "tech-talk",
+  "description": "Simple blog for tech writers",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MellieDee/tech-talk.git"
+  },
+  "author": "Melanie Dubberley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MellieDee/tech-talk/issues"
+  },
+  "homepage": "https://github.com/MellieDee/tech-talk#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^12.0.3",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.13.0"
+  }
+}
