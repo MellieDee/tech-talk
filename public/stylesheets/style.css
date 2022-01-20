@@ -9,9 +9,73 @@ html {
   margin: 0;
   font-family: sans-serif;
   color: #333;
+  font-size: 16px;
 }
 
-a {
+body {
+  background-color: #a9acb0;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
+
+main {
+  padding: 0 1.5em;
+}
+
+.nav {
+  margin: 0.5em 0;
+}
+
+header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.nav li a {
+  padding: 10px 22px;
+  font-weight: lighter;
+  font-size: 1.5em;
+}
+
+.nav li a:hover {
+  background: var(--color2);
+  border-radius: 15px;
+  color: red;
+}
+
+.hero {
+  background-color: black;
+  background-image: url("../assets/images/HeroJoshAngles1.jpg");
+  /* opacity: 0.6; */
+  background-size: cover;
+  background-position: 50% 30%;
+}
+
+.hero-text {
+  color: white;
+}
+
+.site-title {
+  font-size: 3em;
+}
+
+.tag-line {
+  font-size: 1.5em;
+}
+
+.footer-text a {
+  text-decoration: none;
+  color: white;
+}
+
+/*
+.nav-link {
   text-decoration: none;
   color: #225ca3;
   font-weight: bold;
@@ -178,4 +242,4 @@ footer {
   justify-content: center;
   padding: 1%;
   font-size: 110%;
-}
+} */
