@@ -5,14 +5,15 @@ const withAuth = require('../../utils/auth');
 
 // get ALL Posts
 router.get('/', (req, res) => {
-  console.log(' ---------- Got Posts ---------');
+
+
   Post.findAll({
     attributes: [
       'id',
       'post_url',
       'title',
       'created_at',
-    ],
+    ], e45
     // include: [
     //   {
     //     model: Comment,

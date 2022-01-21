@@ -5,8 +5,9 @@ const bcrypt = require('bcrypt')
 
 // class User extends Model { }
 class User extends Model {
-  // set up method to run on instance data (per user) to check password
-  //Using the keyword this, we can access this user's properties, including the password, which was stored as a hashed string.
+  // set up an "Instance Method" to run on instance data (per user) to check password
+  //Using keyword THIS,  access THIS user's properties, including PW which was stored as a hashed string.
+  //takes  plaintext PW retrieved from the client request at req.body.email  & compares with THIS pw
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
@@ -45,7 +46,11 @@ User.init(
   //2nd param
   {
     hooks: {
-      // set up beforeCreate to hash PW
+      // set up beforeCreate to hash PW:
+      // pass new PW as prop on userData{} to b4Cre(),  
+      // goes to bcrypt to hash
+      //then hashPW passed to the Promise{} sa newUserData (it now contains hasedPW)
+      //return exits f() and returns hPW in newUserData f()
       async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;

@@ -14,15 +14,37 @@ html {
 
 body {
   background-color: #a9acb0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-body > footer {
+.content {
+  flex: 3;
+}
+
+/* body > footer {
   position: sticky;
   top: 100vh;
-}
+} */
 
 main {
   padding: 0 1.5em;
+}
+
+.post {
+  border: solid 0.2em black;
+  padding: 0.6em;
+  border-radius: 15px;
+  box-shadow: 5px 10px;
+}
+
+.post-list li {
+  list-style: none;
+}
+.post-title {
+  background-color: whitesmoke;
+  border-radius: 15px;
 }
 
 .nav {
@@ -67,6 +89,10 @@ header nav ul {
 
 .tag-line {
   font-size: 1.5em;
+}
+
+.footer {
+  flex-shrink: 0;
 }
 
 .footer-text a {

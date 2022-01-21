@@ -4,7 +4,10 @@ const { User } = require('../../models');
 // get ALL Users
 router.get('/', (req, res) => {
   // Access User model and run .findAll() method)
-  User.findAll()
+
+  User.findAll({
+    attributes: { exclude: ['password'] }
+  })
     .then(userData => res.json(userData))
     .catch(err => {
       console.log(err);
@@ -15,7 +18,9 @@ router.get('/', (req, res) => {
 
 // GET ONE User
 router.get('/:id', (req, res) => {
+  // Passing 'where' argumant obj
   User.findOne({
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     }
@@ -51,15 +56,19 @@ router.post('/', (req, res) => {
 });
 
 
-
+// LOGIN Route
 router.post('/login', (req, res) => {
   // expects {email: 'name@gmail.com', password: '1234'}
+  // sent the email & plaintext password in JSON to the application in the body of the request
   User.findOne({
     where: {
       email: req.body.email
     }
-  }).then(userData => {
-    if (!userData) {
+    // Query Db for user record that matches email enterd by user
+    //then assigned it to req.body.email
+
+  }).then(dbUserData => {
+    if (!dbUserData) {
       res.status(400).json({ message: 'No user with that email address!' });
       return;
     }
@@ -67,13 +76,19 @@ router.post('/login', (req, res) => {
     // res.json({ user: userData });
 
     // Verify user
-    const validPassword = userData.checkPassword(req.body.password);
+    //userData from user.findOne call
+    // Call checkPW on userData {}
+    //pass plaintext PW (found as prop on userData Obj = userData.password) as arg in checkPW()
+    //checkPW() defined in User Model object{} (not init)
+
+    const validPassword = dbUserData.checkPassword(req.body.password);
+
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect password or eMail!' });
-      return;
+      return; //returns T or F & T or F is sotred on validPassword var
     }
 
-    res.json({ user: userData, message: 'You are now logged in!' });
+    res.json({ user: dbUserData, message: 'You are now logged in!' });
 
   });
 })
@@ -83,6 +98,7 @@ router.post('/login', (req, res) => {
 router.put('/:id', (req, res) => {
   // if req.body has exact key/value pairs to match the model, use `req.body` instead
   User.update(req.body, {
+    // as per Seq Docs need indH = true
     individualHooks: true,
     where: {
       id: req.params.id
