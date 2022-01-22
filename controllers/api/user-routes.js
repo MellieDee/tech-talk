@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Comment } = require('../../models');
 
 // get ALL Users
 router.get('/', (req, res) => {
@@ -23,11 +23,17 @@ router.get('/:id', (req, res) => {
     attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
-    }
+    },
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      }
+    ]
   })
     .then(userData => {
       if (!userData) {
-        res.status(404).json({ message: 'No user found with that ID' });
+        res.status(404).json({ message: 'Cannot find that user!' });
         return;
       }
       res.json(userData);
@@ -70,7 +76,7 @@ router.post('/login', (req, res) => {
 
   }).then(dbUserData => {
     if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
+      res.status(400).json({ message: 'Cannot find that user!' });
       // if email is in db, this instance of a user must be returned in a Promise so we can proceed with the password verification process.
       return;
     }
