@@ -54,7 +54,16 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
-    .then(userData => res.json(userData))
+    .then(dbUserData => {
+      // The req.session.save() method will initiate the creation of the session and then run the callback function once complete.
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.json(dbUserData);
+      });
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -81,25 +90,38 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    // res.json({ user: userData });
-
     // Verify user
     //userData from user.findOne call
     // Call checkPW on userData {} - from bycrypt npm page Check PW Section
     //pass plaintext PW (found as prop on userData Obj = userData.password) as arg in checkPW()
     //checkPW() defined in User Model object{} (not init)
-
     const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect password or eMail!' });
       return; //returns T or F & T or F is sotred on validPassword var
     }
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
 
-    res.json({ user: dbUserData, message: 'You are now logged in!' });
-
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
   });
 })
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 
 
 // PUT UPDATE One User
