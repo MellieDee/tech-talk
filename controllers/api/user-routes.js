@@ -60,6 +60,7 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
   // expects {email: 'name@gmail.com', password: '1234'}
   // sent the email & plaintext password in JSON to the application in the body of the request
+
   User.findOne({
     where: {
       email: req.body.email
@@ -70,6 +71,7 @@ router.post('/login', (req, res) => {
   }).then(dbUserData => {
     if (!dbUserData) {
       res.status(400).json({ message: 'No user with that email address!' });
+      // if email is in db, this instance of a user must be returned in a Promise so we can proceed with the password verification process.
       return;
     }
 
