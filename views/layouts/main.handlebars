@@ -32,12 +32,14 @@
   </head>
 
   <body>
-    <div>
-      <header>
+    <div class="wrapper">
+      <header class="header">
+        {{! class="header d-inline flex-nowrap justify-content-between align-items-center"
+      > }}
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white">
-          <div class="container-fluid">
-            <button
+        <nav class="navbar navbar-expand-lg bg-white">
+          {{! <div class="container-fluid"> }}
+          {{! <button
               class="navbar-toggler"
               type="button"
               data-mdb-toggle="collapse"
@@ -47,65 +49,73 @@
               aria-label="Toggle navigation"
             >
               <i class="fas fa-bars"></i>
-            </button>
+            </button> }}
 
-            <div class="collapse navbar-collapse" id="navbar">
+          {{! <div class="collapse navbar-collapse" id="navbar"> }}
 
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul
+            class="col-s-8 d-flex flex-nowrap justify-content-center navbar-nav me-auto mb-2 mb-lg-0"
+          >
 
-                <li class="nav-item active">
-                  <a class="nav-link" aria-current="page" href="#">Home</a>
-                </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex-inline btn"
+                aria-current="page"
+                href="#"
+              >Home</a>
+            </li>
 
-                <li class="nav-item active">
-                  <a href="/login">login</a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex-inline btn" href="/login">Login</a>
+            </li>
 
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Dashboard</a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex-inline btn" href="#">Dashboard</a>
+            </li>
 
-                <button id="logout" class="btn-no-style nav-item active">logout
-                </button>
+          </ul>
 
-              </ul>
-            </div>
+          <button
+            id="logout"
+            class="logout-btn col-md-8 btn-no-style nav-item nav-link d-flex-inline"
+          >logout</button>
 
-          </div>
+          {{! </ul> }}
+          {{! </div> }}
+
+          {{! </div> }}
         </nav>
-        <!-- Navbar -->
+      </header>
+      <!-- Navbar -->
 
-        <!-- Background image -->
-        <div class="hero p-5 text-center bg-image">
+      <!-- Background image -->
+      <div class="hero p-5 text-center bg-image">
 
-          <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
-            <div class="d-flex justify-content-center align-items-center">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
+          <div class="d-flex justify-content-center align-items-center">
 
-              <div class="hero-text">
-                <h1 class="site-title mb-3">Tech Talk</h1>
-                <h4 class="tag-line mb-3">A Blog for Talking Tech</h4>
-                {{! <a
+            <div class="hero-text">
+              <h1 class="site-title mb-3">Tech Talk</h1>
+              <h4 class="tag-line mb-3">A Blog for Talking Tech</h4>
+              {{! <a
                   class="btn btn-outline-light btn-lg"
                   href="#!"
                   role="button"
                 >Login</a> }}
-              </div>
-
             </div>
-          </div>
 
+          </div>
         </div>
-      </header>
+
+      </div>
 
       <main>
-        <div>
-          {{{body}}}
-        </div>
+        {{{body}}}
       </main>
 
       <footer class="bg-dark text-center footer">
         <!-- Grid container -->
-        <div class="container p-4">
+        <div class="container">
           <!--Grid row-->
           <div class="row">
 
@@ -130,6 +140,7 @@
               </p>
             </div>
             <!--Grid column Ends-->
+
           </div>
           <!--Grid row Ends-->
         </div>
@@ -142,7 +153,7 @@
         >
           2022:
           <a
-            class="text-white"
+            class="text-white mdd"
             href="https://github.com/MellieDee/"
           >MellieDeeDesigns</a>
         </div>

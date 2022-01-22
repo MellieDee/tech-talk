@@ -1,7 +1,20 @@
-<ol class="post-list">
+{{! we sent posts [] in an obj so not how to iterate over the posts[] to get the properties we want 
+declarea variable name( handlebars knows its dealing iwth an obj)}}
+
+<ol class="post-list mt-4">
   {{#each posts as |post|}}
-  <li>
-  {{> cards-home post}}
-  </li>
+    <li>
+      <article class="post me-5 ms-2 mt-3">
+        <div class="title">
+          <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
+          <span>({{post.post_url}})</span>
+        </div>
+        <div class="meta">Created on
+          {{post.created_at}}
+          |
+          <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
+        </div>
+      </article>
+    </li>
   {{/each}}
 </ol>
