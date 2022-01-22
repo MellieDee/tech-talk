@@ -79,7 +79,7 @@ router.post('/login', (req, res) => {
 
     // Verify user
     //userData from user.findOne call
-    // Call checkPW on userData {}
+    // Call checkPW on userData {} - from bycrypt npm page Check PW Section
     //pass plaintext PW (found as prop on userData Obj = userData.password) as arg in checkPW()
     //checkPW() defined in User Model object{} (not init)
 

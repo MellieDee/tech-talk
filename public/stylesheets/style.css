@@ -18,14 +18,12 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+/* 
 .content {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  align-content: space-around;
-}
+} */
 
 /* body > footer {
   position: sticky;
