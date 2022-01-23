@@ -1,11 +1,11 @@
 :root {
   --color1: #4d4b30;
-  --color2: #9acd32;
-  --color3: #798270;
-  --color4: #e1c9b2;
-  --color5: #925217;
-  --color6: #56371a;
-  --color7: #5c8e2b;
+  --color2: #212575;
+  --color3: #afd7ed;
+  --color4: #13b9f0;
+  --color5: #26282b;
+  --color6: #6b090f;
+  --color7: #1da154;
   --color8: black;
 }
 
@@ -62,7 +62,7 @@ header {
   margin-left: 1.1em;
   color: black;
   font-weight: bold;
-  transition: background-color 0.1s;
+  /* transition: background-color 0.1s; */
   cursor: pointer;
   border-radius: 5px;
   width: 6.8em;
@@ -73,66 +73,42 @@ header {
   margin-right: 1.1em;
 }
 
+.btn-submit {
+  border: solid 3px black;
+  background-color: var(--color2);
+  color: whitesmoke;
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 1.5%;
+  width: 100%;
+  justify-content: center;
+}
+
 button:hover,
 .nav-link:hover {
-  background-color: #212575;
-  color: white;
+  background-color: var(--color2);
+  color: whitesmoke;
+  font-size: 1.1em;
+}
+
+.btn-submit:hover {
+  background-color: var(--color4);
+  color: whitesmoke;
+  font-size: 1.4em;
 }
 
 .hero {
   background-color: black;
-  background-image: url("../assets/images/HeroJoshAngles1.jpg");
+  background-image: url("../assets/images/josh-rose-trYl7JYATH0-unsplash.jpeg");
   /* opacity: 0.6; */
   background-size: cover;
   background-position: 50% 30%;
 }
 
 .hero-text {
-  color: white;
-}
-
-textarea,
-input {
-  padding: 0.5%;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-textarea:focus,
-input:focus {
-  outline: none;
-  border: 1px solid #3486eb;
-}
-
-textarea {
-  min-width: 40%;
-  min-height: 100px;
-}
-
-form > div {
-  margin-bottom: 2%;
-}
-
-form label {
-  display: block;
-}
-
-.post {
-  background-color: #e9f0f2;
-  border: solid 0.2em black;
-  padding: 0.6em;
-  border-radius: 15px;
-  box-shadow: 5px 6px;
-  font-size: 1em;
-}
-
-.post-list li {
-  list-style: none;
-}
-
-.post-title {
-  background-color: whitesmoke;
-  border-radius: 15px;
+  color: whitesmoke;
 }
 
 .site-title {
@@ -141,6 +117,92 @@ form label {
 
 .tag-line {
   font-size: 1.5em;
+}
+
+.page-title {
+  font-size: 2.2em;
+  font-weight: bold;
+  padding: 4%;
+}
+
+h4 {
+  background-color: black;
+  color: whitesmoke;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+textarea,
+input {
+  padding: 2%;
+  border-radius: 5px;
+  border: 2px solid black;
+  min-width: 100%;
+  font-size: 1.5em;
+}
+
+/* textarea:focus,
+input:focus {
+  outline: none;
+  border: 1px solid #3486eb;
+} */
+
+textarea {
+  min-height: 150px;
+}
+
+/* form > div {
+  margin-bottom: 2%;
+} */
+
+/* form label {
+  display: block;
+} */
+
+.post {
+  background-color: #e9f0f2;
+  border: solid 0.2em black;
+  border-radius: 15px;
+  box-shadow: 5px 6px;
+  font-size: 1em;
+  padding: 0.6em;
+}
+
+.post-list li {
+  list-style: none;
+}
+
+.post-title {
+  padding: 0.4em;
+}
+
+.single-post-title {
+  font-size: 1.4em;
+  font-weight: bolder;
+  color: #862ab0;
+}
+/* .post-title-href {
+  text-decoration: none;
+} */
+
+.post-title-link,
+.post-title-href {
+  color: whitesmoke;
+  padding: 0.3em;
+  background-color: var(--color5);
+  border-radius: 10px;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+.post-title-link:hover,
+.post-title-href:hover {
+  color: whitesmoke;
+  padding: 0.3em;
+  background-color: var(--color2);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.3em;
 }
 
 .footer {
@@ -167,6 +229,19 @@ form label {
 
   .post {
     font-size: 1em;
+  }
+
+  .btn-submit {
+    border: solid 3px black;
+    background-color: var(--color2);
+    color: white;
+    font-size: 1.3sem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 1.5%;
+    width: 30%;
+    justify-content: center;
   }
 }
 

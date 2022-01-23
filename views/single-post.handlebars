@@ -1,11 +1,47 @@
-<article class="post">
-  <div class="post-title">
-    <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
-    <span>({{post.post_url}})</span>
+{{! GET ONE Post }}
+
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Comment</a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title single-post-title">{{post.title}}</h5>
+    <p class="card-text">{{post_text}}</p>
   </div>
   <div class="meta">
-    {{post.created_at}}
+    By:
+    {{user.username}}
     |
-    <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+    {{post.created_at}}
   </div>
-</article>
+</div>
+
+<form class="comment-form">
+  <div>
+    <textarea name="comment-text"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">Add Comment</button>
+  </div>
+</form>
+
+<div class="comments">
+  {{#each post.comments}}
+    <section class="comment">
+      <div class="meta">
+        {{user.username}}
+        on
+        {{created_at}}
+      </div>
+      <div class="text">
+        {{comment_text}}
+      </div>
+    </section>
+  {{/each}}
+</div>
