@@ -2,7 +2,9 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
 
-//  Render HomePage at Home Path '/' and put posts on it
+
+//  Render HOMEPAGE at Home Path '/' 
+// put posts on it
 router.get('/', (req, res) => {
   console.log(req.session);
   Post.findAll({
@@ -45,7 +47,7 @@ router.get('/', (req, res) => {
 });
 
 
-// get single post
+// GET SINGLE Post
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -72,13 +74,13 @@ router.get('/post/:id', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(postData => {
+      if (!postData) {
+        res.status(404).json({ message: 'Could not find that post! Try again.' });
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      const post = postData.get({ plain: true });
 
       res.render('single-post', {
         post,
