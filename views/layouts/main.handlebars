@@ -66,23 +66,36 @@
                 >Home</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link d-flex-inline btn" href="/login">Login</a>
-              </li>
-
-              <li class="nav-item">
-                <a
-                  class="nav-link d-flex-inline btn"
-                  href="/dashboard"
-                >Dashboard</a>
-              </li>
+              {{#if loggedIn}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link d-flex-inline btn"
+                    href="/dashboard"
+                  >Dashboard</a>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a
+                    class="nav-link d-flex-inline btn"
+                    href="/login"
+                  >Dashboard</a>
+                </li>
+              {{/if}}
 
             </ul>
-
-            <button
-              id="logout-btn"
-              class="logout-btn col-md-8 btn-no-style nav-item nav-link d-flex-inline"
-            >logout</button>
+            {{#if loggedIn}}
+              <button
+                id="logout-btn"
+                class="logout-btn col-md-8 btn-no-style nav-item nav-link d-flex-inline"
+              >logout</button>
+            {{else}}
+              <li class="nav-item">
+                <a
+                  class="nav-link d-flex-inline login-btn btn"
+                  href="/login"
+                >Login</a>
+              </li>
+            {{/if}}
 
           </nav>
         </header>
