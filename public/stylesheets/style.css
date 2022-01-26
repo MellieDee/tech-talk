@@ -88,6 +88,47 @@ header {
   justify-content: center;
 }
 
+.comment-btn {
+  border: solid 3px black;
+  background-color: var(--color2);
+  color: whitesmoke;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.3%;
+  width: 100%;
+  justify-content: center;
+}
+
+button:hover,
+.nav-link:hover {
+  background-color: var(--color2);
+  color: whitesmoke;
+  font-size: 1.1em;
+}
+
+.single-post-card,
+.comment-form {
+  margin: 1.1em;
+}
+
+.comment-title,
+.single-post-title {
+  background-color: black;
+  color: whitesmoke;
+  font-size: 1.3em;
+  padding: 0.4em;
+  margin: 0;
+}
+
+.comment-text {
+  padding: 2%;
+  border-radius: 0;
+  min-width: 100%;
+  font-size: 1.2em;
+}
+
 button:hover,
 .nav-link:hover {
   background-color: var(--color2);
@@ -131,7 +172,7 @@ h4 {
   background-color: black;
   color: whitesmoke;
   padding: 2%;
-  border-radius: 5px;
+  margin: 0;
 }
 
 textarea,
@@ -170,15 +211,16 @@ textarea {
   list-style: none;
 }
 
-.post-title {
-  padding: 0.4em;
+.post-title,
+.single-post-title {
+  padding: 0.2em;
 }
 
-.single-post-title {
+/* .single-post-title {
   font-size: 1.4em;
   font-weight: bolder;
   color: #862ab0;
-}
+} */
 /* .post-title-href {
   text-decoration: none;
 } */

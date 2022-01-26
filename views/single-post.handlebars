@@ -1,33 +1,26 @@
 {{! GET ONE Post }}
 
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Comment</a>
-      </li>
-
-    </ul>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title single-post-title">{{post.title}}</h5>
-    <p class="card-text">{{post_text}}</p>
+<div class="card single-post-card text-center">
+  <div class="post-body">
+    <h3 class="single-post-title">{{post.title}}</h3>
+    <p class="card-text">{{post.post_text}}</p>
   </div>
   <div class="meta">
     By:
     {{user.username}}
     |
-    {{post.created_at}}
+    {{shorten_date post.created_at}}
   </div>
 </div>
 
 <form class="comment-form">
+  <h3 class="comment-title">Add a Comment</h3>
   <div>
-    <textarea name="comment-text"></textarea>
+    <textarea class="comment-text" name="comment-text"></textarea>
   </div>
 
   <div>
-    <button type="submit">Add Comment</button>
+    <button type="submit" class="comment-btn">Submit</button>
   </div>
 </form>
 
@@ -37,7 +30,7 @@
       <div class="meta">
         {{user.username}}
         on
-        {{created_at}}
+        {{shorten_date created_at}}
       </div>
       <div class="text">
         {{comment_text}}
