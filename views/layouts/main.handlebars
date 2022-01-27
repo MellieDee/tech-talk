@@ -173,8 +173,9 @@
       </div>
       <!-- Copyright Ends-->
     </footer>
-
-    <script src="/javascript/logout.js"></script>
+    {{#if loggedIn}}
+      <script src="/javascript/logout.js"></script>
+    {{/if}}
   </body>
 
 </html>

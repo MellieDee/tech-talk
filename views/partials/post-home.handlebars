@@ -1,11 +1,11 @@
 {{! Iterate to create individual posts on homepage }}
 
-<article class="post me-5 ms-2 mt-3">
-  <div class="post-title-link">
-    <a href="/api/posts/{{id}}" class="post-title-href m-0">{{title}}</a>
-  </div>
+<article class="post">
+  <a href="/post/{{id}}" class="post-title-href">{{title}}</a>
+
   <div class="meta">Created on
     {{shorten_date created_at}}
     {{!-- <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a> --}}
   </div>
+
 </article>

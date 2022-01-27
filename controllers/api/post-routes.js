@@ -5,17 +5,14 @@ const withAuth = require('../../utils/auth');
 
 
 // Get ALL Posts
-
-// get all users
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
     attributes: [
       'id',
-      'post_url',
       'title',
+      'post_text',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
       {
@@ -68,7 +65,7 @@ router.get('/:id', (req, res) => {
 
     .then(dbPostData => {
       if (!dbPostData) {
-        res.status(404).json({ message: 'Cannot find that post right  now. Try another!' });
+        res.status(404).json({ message: 'Cannot find that post right  now.' });
         return;
       }
       res.json(dbPostData);

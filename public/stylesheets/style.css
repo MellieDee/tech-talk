@@ -108,9 +108,13 @@ button:hover,
   font-size: 1.1em;
 }
 
+.meta {
+  border-bottom: solid 2px black;
+}
+
 .single-post-card,
 .comment-form {
-  margin: 1.1em;
+  margin: 1.5em;
 }
 
 .comment-title,
@@ -122,7 +126,15 @@ button:hover,
   margin: 0;
 }
 
-.comment-text {
+.section-title-comments {
+  background-color: black;
+  color: whitesmoke;
+  font-size: 1.3em;
+  padding: 0.4em;
+  margin: 2em 1.4em 0;
+}
+
+.card-text {
   padding: 2%;
   border-radius: 0;
   min-width: 100%;

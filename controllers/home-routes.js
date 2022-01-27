@@ -86,7 +86,7 @@ router.get('/post/:id', (req, res) => {
 
       res.render('single-post', {
         post,
-        loggedIn: req.session.loggedIn
+        // loggedIn: req.session.loggedIn
       });
     })
     .catch(err => {

@@ -1,5 +1,4 @@
-{{! GET ONE Post }}
-
+{{! --------Post Card Starts--------- }}
 <div class="card single-post-card text-center">
   <div class="post-body">
     <h3 class="single-post-title">{{post.title}}</h3>
@@ -7,34 +6,55 @@
   </div>
   <div class="meta">
     By:
-    {{user.username}}
-    |
+    {{post.user.username}}
+    on
     {{shorten_date post.created_at}}
   </div>
 </div>
+{{! --------Post Card Ends--------- }}
 
+{{! --------Comment Form Starts--------- }}
 <form class="comment-form">
   <h3 class="comment-title">Add a Comment</h3>
   <div>
-    <textarea class="comment-text" name="comment-text"></textarea>
+    <label hidden for="comment-textarea"></label>
+    <textarea
+      type="text"
+      ,
+      id="comment-text"
+      name="comment-text"
+      placeholder="Comment here"
+    ></textarea>
   </div>
 
   <div>
     <button type="submit" class="comment-btn">Submit</button>
   </div>
 </form>
+{{! --------Comment Form Ends--------------- }}
 
-<div class="comments">
+{{! ------------Comment Cards Start--------- }}
+<section class="cards comments">
+  <div class="section-title">
+    <h3 class="section-title-comments">Comments:</h3>
+  </div>
+
   {{#each post.comments}}
-    <section class="comment">
-      <div class="meta">
-        {{user.username}}
-        on
-        {{shorten_date created_at}}
+    <div class="card w-75 mx-auto mb-4">
+      <div class="card-body">
+
+        <div class="meta">
+          {{user.username}}
+          on
+          {{shorten_date created_at}}
+        </div>
+
+        <p class="card-text">{{comment_text}}</p>
       </div>
-      <div class="text">
-        {{comment_text}}
-      </div>
-    </section>
+    </div>
   {{/each}}
-</div>
+
+</section>
+{{! ------Comment Cards End--------------- }}
+
+<script src="/javascript/comment.js"></script>
