@@ -175,9 +175,11 @@ button:hover,
 }
 
 .page-title {
+  background-color: black;
+  color: white;
   font-size: 2.2em;
   font-weight: bold;
-  padding: 4%;
+  padding: 0.5em;
 }
 
 h4 {
