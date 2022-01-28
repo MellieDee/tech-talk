@@ -4,7 +4,7 @@ const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-// Get ALL Posts
+// ----------  Get ALL Posts Starts  ----------------
 router.get('/', (req, res) => {
   console.log('======================');
   Post.findAll({
@@ -35,10 +35,11 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+// -----------  Get ALL Posts Ends  -----------------
 
 
 
-// get ONE Post
+// ------------- Get ONE Post by ID  Starts ------------
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -62,7 +63,6 @@ router.get('/:id', (req, res) => {
       }
     ]
   })//Promise that captures the response from the database call.
-
     .then(dbPostData => {
       if (!dbPostData) {
         res.status(404).json({ message: 'Cannot find that post right  now.' });
@@ -75,28 +75,16 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+// ------------- Get ONE Post by ID   Ends -------------
 
 
-// CREATE a Post
+// -------------- CREATE a Post  Starts ---------------
 router.post('/', (req, res) => {
   Post.create({
     title: req.body.title,
     post_text: req.body.post_text,
     user_id: req.session.user_id
   })
-    // //   {
-    // //     model: Comment,
-    // //     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-    // //     include: {
-    // //       model: User,
-    // //       attributes: ['username']
-    // //     }
-    // //   },
-    // {
-    //   model: User,
-    //     attributes: ['username']
-    // }
-    //   ]
     //Promise that captures the response from the database call.
     .then(postData => res.json(postData))
     .catch(err => {
@@ -104,25 +92,25 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+// ------------------  CREATE a POST Ends  --------------
 
 
 
-
-//UPDATE a post
+//  --------------- UPDATE a post Starts -------------
 // used req.param to find the post
 //used req.body.title value to replace the title of the post
 //In response, we sent back data that has been modified and stored in the database (since no req.body declared can change all)
 router.put('/:id', (req, res) => {
   Post.update(
-    // {
-    //   title: req.body.title
-    // },
+    {
+      title: req.body.title,
+      post_text: req.body.post_text
+    },
     {
       where: {
         id: req.params.id
       }
-    }
-  )
+    })
     .then(dbPostData => {
       if (!dbPostData) {
         res.status(404).json({ message: 'Cannot find that post! Try again.' });
@@ -135,10 +123,10 @@ router.put('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+// -------------- UPDATE a Post Ends ---------------
 
 
-
-// DELETE One Post
+// ----------  DELETE One Post Starts -------------
 router.delete('/:id', (req, res) => {
   Post.destroy({
     where: {
@@ -157,5 +145,8 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+// -------------- DELETE a Post Ends ---------------
+
+
 
 module.exports = router

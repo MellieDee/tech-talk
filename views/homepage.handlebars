@@ -1,7 +1,7 @@
-{{! we sent posts [] in an obj so not how to iterate over the posts[] to get the properties we want declarea variable}}
+{{! Handlebars knows working with an obj for each iteration & it looks for needed properties; make clearer by declaring a variable in teh each, and using that as subsequent placeholders. |post| is referring to the "top" level obj name implied - so dont need to say post.title.  Would need to say post.comments.post_id}}
 
 <ol class="post-list">
-  {{#each posts as |post|}}
+  {{#each postsArr as |post|}}
   <li>
     {{> post-home post }}
   </li>

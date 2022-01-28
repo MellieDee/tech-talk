@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { User, Post, Comment } = require('../models');
 
 
-//  Render HOMEPAGE at Home Path '/' 
+//----- Render HOMEPAGE at Home Path '/' Starts ------
 // put posts on it
 router.get('/', (req, res) => {
   // console.log(req.session);
@@ -32,13 +32,13 @@ router.get('/', (req, res) => {
     .then(data => {
       // pass a single post object into the homepage template
 
-      // loop over & map ea Sequelize obj into a serialized version of itself, saving the results in a new posts array
-      const posts = data.map(post => post.get({ plain: true }))
+      // loop over & map ea Sequelize obj into a serialized version of itself, saving the results in a new posts array. (serialize obj down to only props needed use Seq get())
+      const postsArr = data.map(post => post.get({ plain: true }))
 
 
-      // add posts[] to an obj THEN pass to render lets us add things later to template
+      // add posts[] to an obj THEN pass to render; lets add things later to template (posts below is the arr)
       res.render('homepage', {
-        posts,
+        postsArr,
         loggedIn: req.session.loggedIn
       });
     })
@@ -47,6 +47,8 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+//----- Render HOMEPAGE at Home Path '/' Ends ------
+
 
 
 // GET SINGLE Post

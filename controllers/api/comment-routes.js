@@ -3,7 +3,7 @@ const { Comment } = require('../../models');
 //const withAuth = require('../../utils/auth');
 
 
-// Get ALL Comments
+// ----------- Get ALL Comments Starts -----------
 router.get('/', (req, res) => {
   Comment.findAll()
     .then(commentData => res.json(commentData))
@@ -12,8 +12,10 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+// ----------- Get ALL Comments Ends-----------
 
-// Get ONE Comments
+
+// Get ONE Comment
 router.get('/:id', (req, res) => {
   Comment.findOne({
     where: {
