@@ -7,6 +7,7 @@ const { Post, User, Comment } = require('../models');
 // ----- GET all the LoggedIN User's POSTS --------
 router.get('/', (req, res) => {
   console.log(req.session);
+  console.log('-------------This is the DB route / ----------')
   Post.findAll({
     where: {
       user_id: req.session.user_id
@@ -48,13 +49,15 @@ router.get('/', (req, res) => {
 
 
 router.get("/edit/:id", (req, res) => {
+  console.log('This is the DB route edit/id')
   Post.findByPk(req.params.id)
     .then(dbPostData => {
       if (dbPostData) {
         const post = dbPostData.get({ plain: true });
 
         res.render("edit-post", {
-          post
+          post,
+          loggedIn: true
         });
       } else {
         res.status(404).end();

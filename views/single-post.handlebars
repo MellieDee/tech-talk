@@ -13,18 +13,13 @@
 </div>
 {{! --------Post Card Ends--------- }}
 
+{{#if loggedIn}}
 {{! --------Comment Form Starts--------- }}
 <form class="comment-form">
   <h3 class="comment-title">Add a Comment</h3>
   <div>
     <label hidden for="comment-textarea"></label>
-    <textarea
-      type="text"
-      ,
-      id="comment-text"
-      name="comment-text"
-      placeholder="Comment here"
-    ></textarea>
+    <textarea type="text" , id="comment-text" name="comment-text" placeholder="Comment here"></textarea>
   </div>
 
   <div>
@@ -32,6 +27,8 @@
   </div>
 </form>
 {{! --------Comment Form Ends--------------- }}
+{{else}}
+{{/if}}
 
 {{! ------------Comment Cards Start--------- }}
 <section class="cards comments">
@@ -40,21 +37,22 @@
   </div>
 
   {{#each post.comments}}
-    <div class="card w-75 mx-auto mb-4">
-      <div class="card-body">
+  <div class="card w-75 mx-auto mb-4">
+    <div class="card-body">
 
-        <div class="meta">
-          {{user.username}}
-          on
-          {{shorten_date created_at}}
-        </div>
-
-        <p class="card-text">{{comment_text}}</p>
+      <div class="meta">
+        {{user.username}}
+        on
+        {{shorten_date created_at}}
       </div>
+
+      <p class="card-text">{{comment_text}}</p>
     </div>
+  </div>
   {{/each}}
 
 </section>
 {{! ------Comment Cards End--------------- }}
+
 
 <script src="/javascript/comment.js"></script>
