@@ -5,7 +5,7 @@
   --color4: #13b9f0;
   --color5: #26282b;
   --color6: #6b090f;
-  --color7: #1da154;
+  --color7: #e65a15;
   --color8: black;
 }
 
@@ -75,30 +75,47 @@ header {
   margin-right: 1.1em;
 }
 
-.btn-submit {
+/* {
   border: solid 3px black;
-  background-color: var(--color2);
+  background-color: var(--color7);
   color: whitesmoke;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
-  padding: 1.5%;
+  padding: 1.1%;
+  width: 100%;
+  justify-content: center;
+} */
+
+.btn-delete {
+  border: solid 3px black;
+  background-color: #751212;
+  color: whitesmoke;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2%;
+  padding: 0.3%;
+  width: 100%;
+  justify-content: center;
+}
+.comment-btn,
+.btn-submit,
+.edit-btn {
+  border: solid 3px black;
+  background-color: var(--color7);
+  color: whitesmoke;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 0.3%;
   width: 100%;
   justify-content: center;
 }
 
-.comment-btn {
-  border: solid 3px black;
-  background-color: var(--color2);
+.edit-btn-nav {
+  background-color: #b8653d;
   color: whitesmoke;
-  font-size: 1.1em;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 0.3%;
-  width: 100%;
-  justify-content: center;
+  border-radius: 7px;
 }
 
 button:hover,
@@ -143,17 +160,21 @@ button:hover,
 
 button:hover,
 .nav-link:hover {
-  background-color: var(--color2);
+  background-color: var(--color7);
   color: whitesmoke;
   font-size: 1.1em;
 }
 
-.btn-submit:hover {
-  background-color: var(--color4);
+.btn-submit:hover,
+.edit-btn:hover {
+  background-color: var(--color2);
   color: whitesmoke;
   font-size: 1.4em;
 }
 
+.list-item {
+  margin-top: 2%;
+}
 .hero {
   background-color: black;
   background-image: url("../assets/images/josh-rose-trYl7JYATH0-unsplash.jpeg");
@@ -253,7 +274,7 @@ textarea {
 .post-title-href:hover {
   color: whitesmoke;
   padding: 0.3em;
-  background-color: var(--color2);
+  background-color: var(--color7);
   border-radius: 10px;
   text-decoration: none;
   font-size: 1.3em;
@@ -291,9 +312,9 @@ textarea {
     margin: 0 auto;
   }
 
-  .btn-submit {
+  /* .btn-submit {
     border: solid 3px black;
-    background-color: var(--color2);
+    background-color: var(--color7);
     color: white;
     font-size: 1em;
     font-weight: bold;
@@ -302,7 +323,7 @@ textarea {
     padding: 1.5%;
     width: 40%;
     justify-content: center;
-  }
+  } */
 }
 
 /***LARGER TABLETS,  LAPTOPS  DESKTOPS  ***/

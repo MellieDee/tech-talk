@@ -7,12 +7,7 @@
     <form class="new-post-form">
       <div>
         <label hidden for="post-title">Title</label>
-        <input
-          type="text"
-          id="post-title"
-          name="post-title"
-          placeholder="Title"
-        />
+        <input type="text" id="post-title" name="post-title" placeholder="Title" />
       </div>
 
       <div>
@@ -29,27 +24,23 @@
 {{! ---------New Post Form Ends---------- }}
 
 {{! ---------- User Posts Cards Start ------ }}
-
 <ol class="post-list">
   {{#each postsArr as |post|}}
-    <li>
-      <article class="post">
-        <a
-          href="dashboard/edit/{{post.id}}"
-          class="post-title-href"
-        >{{title}}</a>
-        <p>{{comments.id}}</p>
-        <div class="meta">Created on
-          {{shorten_date created_at}}
+  <li class="list-item">
+    <article class="post">
+      <a href="/dashboard/edit/{{id}}" {{!-- href="dashboard/edit/{{post.id}}" --}}
+        class="post-title-href">{{title}}</a>
 
-          {{!-- <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a> --}}
-        </div>
-
-      </article>
-    </li>
+      <div class="meta">Created on
+        {{shorten_date created_at}}
+        {{!-- <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a> --}}
+      </div>
+    </article>
+  </li>
   {{/each}}
 </ol>
 
 {{! ---------- User Posts Cards End ------ }}
 
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/edit-post.js"></script>

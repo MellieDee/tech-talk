@@ -45,6 +45,9 @@ app.use(routes);
 // //then turn on the server (true = overwrite)
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}!`);
+    console.log(`
+  ///////////////////////////
+  App listening on port ${PORT}!
+ /////////////////////////`);
   });
 });

@@ -1,31 +1,25 @@
-<section>
+<section class="m-5">
+  <h3 class="page-title mx-auto">Your Dashboard</h3>
   {{! ------------New Post Form ----------- }}
   <div>
-    <h4>Edit New Post</h4>
-    <form class="edit-post-form">
-      <div>
-        <input
-          type="text"
-          id="post-title"
-          name="post-title"
-          value="{{post.title}}"
-        />
-      </div>
-
-      <div>
-
-        <textarea name="post-textarea" value="{{post_text}}"></textarea>
-      </div>
-
-      <button class="edit-btn btn-block" type="submit">Update</button>
-      <button
-        class="btn-delete btn-danger btn-block"
-        type="submit"
-      >Delete</button>
-    </form>
+    <h4>Edit Post</h4>
   </div>
+  <form class="edit-post-form">
+    <input type="hidden" name="post-id" value="{{post.id}}" />
+
+    <input type="text" name="post-title" value="{{post.title}}" />
+
+    <textarea name="post-textarea">{{post.post_text}}</textarea>
+
+    <button class="edit-btn btn-block" id="edit-btn" type="submit">Update</button>
+    <button class="btn-delete btn-danger btn-block" type="submit">Delete</button>
+  </form>
+
 </section>
 {{! ---------New Post Form Ends---------- }}
 
 <script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
+
+
+{{!--
+<script src="/javascript/delete-post.js"></script> --}}
