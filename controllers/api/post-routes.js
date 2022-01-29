@@ -86,7 +86,7 @@ router.post('/', (req, res) => {
 // used req.param to find the post
 //used req.body.title value to replace the title of the post
 //In response, we sent back data that has been modified and stored in the database (since no req.body declared can change all)
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
@@ -113,7 +113,7 @@ router.put('/:id', (req, res) => {
 
 
 // ----------  DELETE One Post Starts -------------
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   console.log('============DELETE ROUTE==========');
   Post.destroy({
     where: {

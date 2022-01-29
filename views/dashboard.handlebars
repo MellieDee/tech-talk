@@ -23,23 +23,25 @@
 </section>
 {{! ---------New Post Form Ends---------- }}
 
+
 {{! ---------- User Posts Cards Start ------ }}
-<ol class="post-list">
-  {{#each postsArr as |post|}}
-  <li class="list-item">
-    <article class="post">
-      <a href="/dashboard/edit/{{id}}" {{!-- href="dashboard/edit/{{post.id}}" --}}
-        class="post-title-href">{{title}}</a>
+<section class="m-5">
+  <ol class="post-list">
+    {{#each postsArr as |post|}}
+    <li class="list-item">
+      <article class="post">
+        <a href="/dashboard/edit/{{id}}" {{!-- href="dashboard/edit/{{post.id}}" --}}
+          class="post-title-href">{{title}}</a>
 
-      <div class="meta">Created on
-        {{shorten_date created_at}}
-        {{!-- <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a> --}}
-      </div>
-    </article>
-  </li>
-  {{/each}}
-</ol>
-
+        <div class="meta">Created on
+          {{shorten_date created_at}}
+          {{!-- <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a> --}}
+        </div>
+      </article>
+    </li>
+    {{/each}}
+  </ol>
+</section>
 {{! ---------- User Posts Cards End ------ }}
 
 <script src="/javascript/add-post.js"></script>

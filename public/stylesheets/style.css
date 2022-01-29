@@ -59,7 +59,6 @@ header {
 
 .nav-link {
   border: solid 3px black;
-  /* padding: 5px 30px; */
   margin-left: 1.1em;
   color: black;
   font-weight: bold;
@@ -74,18 +73,6 @@ header {
 .login-btn {
   margin-right: 1.1em;
 }
-
-/* {
-  border: solid 3px black;
-  background-color: var(--color7);
-  color: whitesmoke;
-  font-size: 1.2em;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 1.1%;
-  width: 100%;
-  justify-content: center;
-} */
 
 .btn-delete {
   border: solid 3px black;
@@ -172,9 +159,15 @@ button:hover,
   font-size: 1.4em;
 }
 
-.list-item {
-  margin-top: 2%;
+.post-list {
+  margin-left: -2%;
 }
+
+.list-item {
+  list-style: none;
+  margin: 2%;
+}
+
 .hero {
   background-color: black;
   background-image: url("../assets/images/josh-rose-trYl7JYATH0-unsplash.jpeg");
@@ -219,19 +212,9 @@ input {
   font-size: 1.2em;
 }
 
-/* textarea:focus,
-input:focus {
-  outline: none;
-  border: 1px solid #3486eb;
-} */
-
 textarea {
   min-height: 150px;
 }
-
-/* form label {
-  display: block;
-} */
 
 .post {
   background-color: #e9f0f2;
@@ -242,23 +225,10 @@ textarea {
   padding: 0.6em;
 }
 
-.post-list li {
-  list-style: none;
-}
-
 .post-title,
 .single-post-title {
   padding: 0.2em;
 }
-
-/* .single-post-title {
-  font-size: 1.4em;
-  font-weight: bolder;
-  color: #862ab0;
-} */
-/* .post-title-href {
-  text-decoration: none;
-} */
 
 .post-title-link,
 .post-title-href {
@@ -311,19 +281,6 @@ textarea {
     max-width: 25%;
     margin: 0 auto;
   }
-
-  /* .btn-submit {
-    border: solid 3px black;
-    background-color: var(--color7);
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 1.5%;
-    width: 40%;
-    justify-content: center;
-  } */
 }
 
 /***LARGER TABLETS,  LAPTOPS  DESKTOPS  ***/
