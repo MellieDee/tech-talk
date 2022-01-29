@@ -1,4 +1,6 @@
-{{! Handlebars knows working with an obj for each iteration & it looks for needed properties; make clearer by declaring a variable in teh each, and using that as subsequent placeholders. |post| is referring to the "top" level obj name implied - so dont need to say post.title.  Would need to say post.comments.post_id}}
+{{! Handlebars knows working with an obj for each iteration & it looks for needed properties; make clearer by declaring
+a variable in teh each, and using that as subsequent placeholders. |post| is referring to the "top" level obj name
+implied - so dont need to say post.title. Would need to say post.comments.post_id}}
 
 <ol class="post-list">
   {{#each postsArr as |post|}}

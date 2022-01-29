@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 // ----------- Get ALL Comments Ends-----------
 
 
-// Get ONE Comment
+// -------------Get ONE Comment Starts --------
 router.get('/:id', (req, res) => {
   Comment.findOne({
     where: {
@@ -28,10 +28,10 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+// ----------- Get ONE Comments Ends-----------
 
 
-
-// CREATE a Comment
+// ------------CREATE a Comment Starts --------
 router.post('/', (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
@@ -43,13 +43,11 @@ router.post('/', (req, res) => {
       console.log(err);
       res.status(400).json(err);
     })
-
-
 });
+// ----------- CREATE ONE Comments Ends-----------
 
 
-
-// PUT UPDATE One Comment
+// ------------ PUT UPDATE One Comment Starts---------
 router.put('/:id', (req, res) => {
   // if req.body has exact key/value pairs to match the model, use `req.body` instead
   Comment.update(req.body, {
@@ -69,25 +67,25 @@ router.put('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+// ------------ PUT UPDATE One Comment Ends---------
 
 
 
+// -------------- DELETE a Comment Starts ---------
+// router.delete('/:id', (req, res) => {
+//   Comment.destroy({
+//     where: {
+//       id: req.params.id
+//     }
 
-// DELETE a Comment
-router.delete('/:id', (req, res) => {
-  Comment.destroy({
-    where: {
-      id: req.params.id
-    }
-
-  })
-    .then(dbCommentData => res.json(dbCommentData))
-    .catch(err => {
-      console.lor(err);
-      res.status(400).json(err);
-    })
-});
-
+//   })
+//     .then(dbCommentData => res.json(dbCommentData))
+//     .catch(err => {
+//       console.lor(err);
+//       res.status(400).json(err);
+//     })
+// });
+// -------------- DELETE a Comment Ends ---------
 
 
 

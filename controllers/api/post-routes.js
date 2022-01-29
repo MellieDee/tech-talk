@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 
 // ----------  Get ALL Posts Starts  ----------------
 router.get('/', (req, res) => {
-  console.log('======================');
+
   Post.findAll({
     attributes: [
       'id',
@@ -14,20 +14,6 @@ router.get('/', (req, res) => {
       'post_text',
       'created_at',
     ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -51,7 +37,7 @@ router.get('/:id', (req, res) => {
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
-
+        order: ['created_at', 'DESC'],
         include: {
           model: User,
           attributes: ['username']
@@ -128,6 +114,7 @@ router.put('/:id', (req, res) => {
 
 // ----------  DELETE One Post Starts -------------
 router.delete('/:id', (req, res) => {
+  console.log('============DELETE ROUTE==========');
   Post.destroy({
     where: {
       id: req.params.id
