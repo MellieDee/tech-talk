@@ -8,26 +8,27 @@ const { User, Post, Comment } = require('../models');
 router.get('/', (req, res) => {
   // console.log(req.session);
   Post.findAll({
-    attributes: [
-      'id',
-      'post_text',
-      'title',
-      'created_at'
-    ],
-    include: [
-      {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
+    include: [User],
+    // attributes: [
+    //   'id',
+    //   'post_text',
+    //   'title',
+    //   'created_at'
+    // ],
+    // include: [
+    //   {
+    //     model: Comment,
+    //     attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+    //     include: {
+    //       model: User,
+    //       attributes: ['username']
+    //     }
+    //   },
+    //   {
+    //     model: User,
+    //     attributes: ['username']
+    //   }
+    // ]
   })
     .then(data => {
       // pass a single post object into the homepage template
@@ -63,7 +64,12 @@ router.get('/post/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
         include: {
           model: User,
+          attributes: ['username']
         }
+      },
+      {
+        model: User,
+        attributes: ['username']
       }
     ]
   })
@@ -72,7 +78,10 @@ router.get('/post/:id', (req, res) => {
         res.status(404).json({ message: 'Could not find that post! Try again.' });
         return;
       }
+
       const post = data.get({ plain: true });
+
+      console.log(post + '*************')
 
       res.render('single-post', {
         post,
