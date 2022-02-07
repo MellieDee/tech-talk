@@ -6,6 +6,10 @@
   "name": "tech-talk",
   "description": "Simple blog for tech writers",
   "version": "1.0.0",
+  "engines": {
+    "npm": ">=8.x",
+    "node": ">=16.x"
+  },
   "main": "server.js",
   "repository": {
     "type": "git",
@@ -20,7 +24,7 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.1.2",
-    "dotenv": "^12.0.3",
+    "dotenv": "^12.0.4",
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
